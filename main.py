@@ -47,17 +47,6 @@ with sync_playwright() as p:
             except IndexError as e:
                 break
 
-di = []
-
-produtos = sorted(produtos, key=itemgetter(-1))
-for p in produtos:
-    di.append({
-        'Titulo':p[0],
-        'Descrição': ' '.join(p[:-2]),
-        'Preço': p[-1]
-    })
-
-
 
 app = Flask(__name__)
 
@@ -71,13 +60,13 @@ def apiPage():
     for produto in produtos:
         resposta.append({
             'Titulo':produto[0],
-            'Descricao': ' '.join(produto[:-1]),
-            'Preco': produto[-1]
+            'Descrição': ' '.join(produto[:-1]),
+            'Preço': produto[-1]
         })
     return jsonify(resposta)
 
 
-app.run(host='0.0.0.0')
+app.run()
 
 # /html/body/div[1]/div[3]/div/div[2]/div/div[1]/div/div[1]/h4[2]/a
 # /html/body/div[1]/div[3]/div/div[2]/div/div[2]/div/div[1]/h4[2]/a
