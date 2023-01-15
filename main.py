@@ -79,6 +79,7 @@ app.config['JSON_SORT_KEYS'] = False
 def apiPage():
     resposta = []
     produtos = get_dados()
+    produtos = sorted(produtos, key=itemgetter(-3))
 
     for produto in produtos:
         resposta.append({
