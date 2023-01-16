@@ -9,6 +9,7 @@ dict_resp = r.json()
 for resp in dict_resp:
     print(f'''
         Titulo: {resp['Titulo']},
+        Preço: {resp['Preço']}
         Descrição: {resp['Descrição']},
         Avaliação: {resp['Avaliaçoes']},
         Estrelas: {resp['Estrelas']},

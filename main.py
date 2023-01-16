@@ -3,6 +3,7 @@ from operator import attrgetter, itemgetter
 
 import playwright
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 from playwright.sync_api import expect, sync_playwright
 
 
@@ -74,6 +75,9 @@ app = Flask(__name__)
 
 app.config['JSON_AS_ASCII'] = False
 app.config['JSON_SORT_KEYS'] = False
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app)
 
 @app.route('/')
 def apiPage():
@@ -92,7 +96,7 @@ def apiPage():
     return jsonify(resposta)
 
 
-app.run()
+app.run(host='0.0.0.0')
 
 # /html/body/div[1]/div[3]/div/div[2]/div/div[1]/div/div[1]/h4[2]/a
 # /html/body/div[1]/div[3]/div/div[2]/div/div[2]/div/div[1]/h4[2]/a
